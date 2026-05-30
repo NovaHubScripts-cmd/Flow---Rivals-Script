@@ -23,6 +23,10 @@ local TopBarCorner = Instance.new("UICorner")
 local Title = Instance.new("TextLabel")
 local Divider = Instance.new("Frame")
 local MessageLabel = Instance.new("TextLabel")
+local Divider2 = Instance.new("Frame")
+local DiscordSection = Instance.new("Frame")
+local DiscordIcon = Instance.new("TextLabel")
+local DiscordText = Instance.new("TextLabel")
 local ButtonHolder = Instance.new("Frame")
 local CloseButton = Instance.new("TextButton")
 local CloseCorner = Instance.new("UICorner")
@@ -42,9 +46,9 @@ Blur.BorderSizePixel = 0
 Blur.ZIndex = 1
 Blur.Parent = ScreenGui
 
--- Main box (taller now to fit 2 buttons)
-Frame.Size = UDim2.new(0, 340, 0, 210)
-Frame.Position = UDim2.new(0.5, -170, 0.5, -105)
+-- Main box
+Frame.Size = UDim2.new(0, 340, 0, 270)
+Frame.Position = UDim2.new(0.5, -170, 0.5, -135)
 Frame.BackgroundColor3 = Color3.fromRGB(18, 18, 24)
 Frame.BorderSizePixel = 0
 Frame.ZIndex = 2
@@ -82,7 +86,7 @@ Title.Font = Enum.Font.GothamBold
 Title.ZIndex = 4
 Title.Parent = TopBar
 
--- Divider
+-- Divider 1
 Divider.Size = UDim2.new(0.9, 0, 0, 1)
 Divider.Position = UDim2.new(0.05, 0, 0, 48)
 Divider.BackgroundColor3 = Color3.fromRGB(50, 50, 65)
@@ -91,7 +95,7 @@ Divider.ZIndex = 3
 Divider.Parent = Frame
 
 -- Message
-MessageLabel.Size = UDim2.new(0.85, 0, 0, 70)
+MessageLabel.Size = UDim2.new(0.85, 0, 0, 55)
 MessageLabel.Position = UDim2.new(0.075, 0, 0, 55)
 MessageLabel.BackgroundTransparency = 1
 MessageLabel.TextColor3 = Color3.fromRGB(210, 210, 220)
@@ -108,9 +112,52 @@ else
     MessageLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
 end
 
--- Button holder (holds both buttons side by side)
-ButtonHolder.Size = UDim2.new(0.9, 0, 0, 40)
-ButtonHolder.Position = UDim2.new(0.05, 0, 1, -55)
+-- Divider 2
+Divider2.Size = UDim2.new(0.9, 0, 0, 1)
+Divider2.Position = UDim2.new(0.05, 0, 0, 118)
+Divider2.BackgroundColor3 = Color3.fromRGB(50, 50, 65)
+Divider2.BorderSizePixel = 0
+Divider2.ZIndex = 3
+Divider2.Parent = Frame
+
+-- Discord Section background
+DiscordSection.Size = UDim2.new(0.9, 0, 0, 70)
+DiscordSection.Position = UDim2.new(0.05, 0, 0, 126)
+DiscordSection.BackgroundColor3 = Color3.fromRGB(88, 101, 242, 0.1)
+DiscordSection.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+DiscordSection.BorderSizePixel = 0
+DiscordSection.ZIndex = 3
+DiscordSection.Parent = Frame
+
+local DiscordSectionCorner = Instance.new("UICorner")
+DiscordSectionCorner.CornerRadius = UDim.new(0, 8)
+DiscordSectionCorner.Parent = DiscordSection
+
+-- Discord icon
+DiscordIcon.Size = UDim2.new(0, 30, 0, 30)
+DiscordIcon.Position = UDim2.new(0, 10, 0.5, -15)
+DiscordIcon.BackgroundTransparency = 1
+DiscordIcon.Text = "💬"
+DiscordIcon.TextScaled = true
+DiscordIcon.ZIndex = 4
+DiscordIcon.Parent = DiscordSection
+
+-- Discord promo text
+DiscordText.Size = UDim2.new(1, -50, 1, 0)
+DiscordText.Position = UDim2.new(0, 45, 0, 0)
+DiscordText.BackgroundTransparency = 1
+DiscordText.Text = "Join our Discord for more scripts,\nupdates & support!"
+DiscordText.TextColor3 = Color3.fromRGB(180, 185, 255)
+DiscordText.TextScaled = true
+DiscordText.Font = Enum.Font.Gotham
+DiscordText.TextWrapped = true
+DiscordText.TextXAlignment = Enum.TextXAlignment.Left
+DiscordText.ZIndex = 4
+DiscordText.Parent = DiscordSection
+
+-- Button holder
+ButtonHolder.Size = UDim2.new(0.9, 0, 0, 38)
+ButtonHolder.Position = UDim2.new(0.05, 0, 1, -50)
 ButtonHolder.BackgroundTransparency = 1
 ButtonHolder.ZIndex = 3
 ButtonHolder.Parent = Frame
@@ -123,7 +170,7 @@ ButtonLayout.Padding = UDim.new(0, 10)
 ButtonLayout.Parent = ButtonHolder
 
 -- Close button
-CloseButton.Size = UDim2.new(0, 140, 0, 36)
+CloseButton.Size = UDim2.new(0, 140, 0, 34)
 CloseButton.BackgroundColor3 = isSupported and Color3.fromRGB(30, 120, 255) or Color3.fromRGB(200, 40, 40)
 CloseButton.Text = "Close"
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -137,8 +184,8 @@ CloseCorner.CornerRadius = UDim.new(0, 8)
 CloseCorner.Parent = CloseButton
 
 -- Discord button
-DiscordButton.Size = UDim2.new(0, 140, 0, 36)
-DiscordButton.BackgroundColor3 = Color3.fromRGB(88, 101, 242) -- Discord purple
+DiscordButton.Size = UDim2.new(0, 140, 0, 34)
+DiscordButton.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
 DiscordButton.Text = "Join Discord"
 DiscordButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 DiscordButton.Font = Enum.Font.GothamBold
@@ -157,24 +204,23 @@ end)
 
 DiscordButton.MouseButton1Click:Connect(function()
     setclipboard("https://discord.gg/7Ek8zQaQ8d")
-    
-    -- Show a small "Copied!" hint
+
     local hint = Instance.new("TextLabel")
-    hint.Size = UDim2.new(0, 140, 0, 24)
-    hint.Position = UDim2.new(0.5, -70, 1, -80)
+    hint.Size = UDim2.new(0.8, 0, 0, 22)
+    hint.Position = UDim2.new(0.1, 0, 1, -78)
     hint.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
     hint.TextColor3 = Color3.fromRGB(150, 255, 150)
-    hint.Text = "Link copied to clipboard!"
+    hint.Text = "✓ Discord link copied to clipboard!"
     hint.Font = Enum.Font.Gotham
     hint.TextScaled = true
     hint.BorderSizePixel = 0
     hint.ZIndex = 5
     hint.Parent = Frame
-    
+
     local hintCorner = Instance.new("UICorner")
     hintCorner.CornerRadius = UDim.new(0, 6)
     hintCorner.Parent = hint
-    
+
     task.delay(2, function()
         hint:Destroy()
     end)
