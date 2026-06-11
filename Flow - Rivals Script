@@ -94,11 +94,10 @@ Divider.BorderSizePixel = 0
 Divider.ZIndex = 3
 Divider.Parent = Frame
 
--- Message (same TextSize as Discord text)
+-- Message
 MessageLabel.Size = UDim2.new(0.85, 0, 0, 55)
 MessageLabel.Position = UDim2.new(0.075, 0, 0, 55)
 MessageLabel.BackgroundTransparency = 1
-MessageLabel.TextColor3 = Color3.fromRGB(210, 210, 220)
 MessageLabel.TextScaled = false
 MessageLabel.TextSize = 16
 MessageLabel.Font = Enum.Font.Gotham
@@ -108,6 +107,7 @@ MessageLabel.Parent = Frame
 
 if isSupported then
     MessageLabel.Text = "Hi! Welcome to Kicia Hook Script.\nRunning on: " .. executorName
+    MessageLabel.TextColor3 = Color3.fromRGB(210, 210, 220)
 else
     MessageLabel.Text = "Your executor is not supported.\nOnly Volt and Wave work with this script."
     MessageLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
@@ -121,7 +121,7 @@ Divider2.BorderSizePixel = 0
 Divider2.ZIndex = 3
 Divider2.Parent = Frame
 
--- Discord Section background
+-- Discord Section
 DiscordSection.Size = UDim2.new(0.9, 0, 0, 70)
 DiscordSection.Position = UDim2.new(0.05, 0, 0, 126)
 DiscordSection.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
@@ -142,7 +142,7 @@ DiscordIcon.TextScaled = true
 DiscordIcon.ZIndex = 4
 DiscordIcon.Parent = DiscordSection
 
--- Discord promo text (same TextSize as message)
+-- Discord text
 DiscordText.Size = UDim2.new(1, -50, 1, 0)
 DiscordText.Position = UDim2.new(0, 45, 0, 0)
 DiscordText.BackgroundTransparency = 1
